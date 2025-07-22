@@ -80,6 +80,68 @@ $(document).ready(function() {
         ride: 'carousel'
     });
 
+    // ===== PROPERTIES SCROLL ANIMATION =====
+    function checkPropertiesScroll() {
+        $('.property-showcase').each(function() {
+            var $this = $(this);
+            var elementTop = $this.offset().top;
+            var elementBottom = elementTop + $this.outerHeight();
+            var viewportTop = $(window).scrollTop();
+            var viewportBottom = viewportTop + $(window).height();
+            var triggerPoint = viewportTop + ($(window).height() * 0.8);
+
+            // Check if element is in viewport with trigger point
+            if (elementTop < triggerPoint && elementBottom > viewportTop) {
+                // Add visible class for height/opacity
+                $this.addClass('property-visible');
+
+                // Add animation class with slight delay for staggered effect
+                setTimeout(function() {
+                    $this.addClass('animate-in');
+                }, 100);
+            }
+        });
+    }
+
+    // Enhanced scroll handler with throttling
+    var scrollTimeout;
+    $(window).scroll(function() {
+        if (scrollTimeout) {
+            clearTimeout(scrollTimeout);
+        }
+        scrollTimeout = setTimeout(function() {
+            checkPropertiesScroll();
+        }, 10);
+    });
+
+    // Check on page load
+    setTimeout(function() {
+        checkPropertiesScroll();
+    }, 500);
+
+    // ===== SEE MORE PROPERTIES BUTTON =====
+    $('#seeMoreProperties').click(function() {
+        var hiddenProperties = $('.property-hidden');
+
+        if (hiddenProperties.length > 0) {
+            // Show hidden properties with animation
+            hiddenProperties.removeClass('property-hidden').addClass('property-visible');
+
+            // Change button text
+            $(this).text('View All Properties').removeClass('btn-outline-dark').addClass('btn-primary');
+
+            // Scroll to first newly visible property
+            setTimeout(function() {
+                $('html, body').animate({
+                    scrollTop: hiddenProperties.first().offset().top - 100
+                }, 800);
+            }, 300);
+        } else {
+            // Redirect to properties page or show more content
+            window.location.href = '#contact'; // Or redirect to a properties page
+        }
+    });
+
     // ===== ANIMATIONS ON SCROLL =====
     function animateOnScroll() {
         $('.feature-item, .stat-item, .property-card').each(function() {
@@ -163,13 +225,21 @@ $(document).ready(function() {
         }
     });
 
-    $('.subscribe-form').submit(function(e) {
+    $('.subscribe-form, .newsletter-form').submit(function(e) {
         e.preventDefault();
-        
+
         var email = $(this).find('input[type="email"]').val();
+        var submitBtn = $(this).find('button[type="submit"]');
+        var originalText = submitBtn.text();
+
         if (email && isValidEmail(email)) {
-            showNotification('Thank you for subscribing to our newsletter!', 'success');
-            $(this)[0].reset();
+            submitBtn.text('Subscribing...').prop('disabled', true);
+
+            setTimeout(function() {
+                showNotification('Thank you for subscribing to our newsletter!', 'success');
+                $('.subscribe-form, .newsletter-form')[0].reset();
+                submitBtn.text(originalText).prop('disabled', false);
+            }, 1500);
         } else {
             showNotification('Please enter a valid email address.', 'error');
         }
@@ -247,13 +317,13 @@ $(document).ready(function() {
     // ===== BACK TO TOP BUTTON =====
     $(window).scroll(function() {
         if ($(this).scrollTop() > 300) {
-            $('.back-to-top').fadeIn();
+            $('.back-to-top').addClass('show');
         } else {
-            $('.back-to-top').fadeOut();
+            $('.back-to-top').removeClass('show');
         }
     });
 
-    $('.back-to-top').click(function(e) {
+    $('.back-to-top, #backToTop').click(function(e) {
         e.preventDefault();
         $('html, body').animate({scrollTop: 0}, 800);
     });
