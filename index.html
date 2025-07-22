@@ -330,41 +330,117 @@
 
     <!-- Property Gallery Section -->
     <section id="gallery" class="gallery-section">
-        <div class="container">
+        <div class="container-fluid">
             <div class="section-header text-center">
                 <h2 class="section-title">Property GALLERY</h2>
+                <p class="section-subtitle">Explore our stunning collection of premium properties</p>
             </div>
 
-            <div class="gallery-grid">
-                <div class="gallery-item">
+            <!-- Gallery Filter Tabs -->
+            <div class="gallery-filters text-center">
+                <button class="filter-btn active" data-filter="all">All Properties</button>
+                <button class="filter-btn" data-filter="residential">Residential</button>
+                <button class="filter-btn" data-filter="commercial">Commercial</button>
+                <button class="filter-btn" data-filter="luxury">Luxury</button>
+            </div>
+
+            <!-- Creative Gallery Layout -->
+            <div class="gallery-creative">
+                <!-- Large Featured Image -->
+                <div class="gallery-item gallery-large" data-category="luxury">
                     <div class="gallery-image">
-                        <img src="images/real.jpg" alt="Luxury Property 1">
+                        <img src="images/real1.jpg" alt="Luxury Villa Estate">
                         <div class="gallery-overlay">
-                            <h4>Premium Residences</h4>
-                            <p>Luxury Living Spaces</p>
+                            <div class="overlay-content">
+                                <span class="property-tag">FEATURED</span>
+                                <h3>Luxury Villa Estate</h3>
+                                <p>Premium architectural masterpiece with world-class amenities</p>
+                                <div class="property-details">
+                                    <span><i class="fas fa-map-marker-alt"></i> Wakad, Pune</span>
+                                    <span><i class="fas fa-home"></i> Villa</span>
+                                </div>
+                                <button class="btn btn-outline-light btn-sm">View Details</button>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="gallery-item">
+                <!-- Medium Images -->
+                <div class="gallery-item gallery-medium" data-category="residential">
                     <div class="gallery-image">
-                        <img src="images/real1.jpg" alt="Luxury Property 2">
+                        <img src="images/real.jpg" alt="Modern Apartments">
                         <div class="gallery-overlay">
-                            <h4>Modern Architecture</h4>
-                            <p>Contemporary Design</p>
+                            <div class="overlay-content">
+                                <span class="property-tag">NEW</span>
+                                <h4>Modern Apartments</h4>
+                                <p>Contemporary living spaces</p>
+                                <div class="property-details">
+                                    <span><i class="fas fa-map-marker-alt"></i> Baner, Pune</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="gallery-item">
+                <div class="gallery-item gallery-medium" data-category="commercial">
                     <div class="gallery-image">
-                        <img src="images/real3.jpg" alt="Luxury Property 3">
+                        <img src="images/real3.jpg" alt="Commercial Spaces">
                         <div class="gallery-overlay">
-                            <h4>Elegant Interiors</h4>
-                            <p>Sophisticated Spaces</p>
+                            <div class="overlay-content">
+                                <span class="property-tag">PREMIUM</span>
+                                <h4>Commercial Spaces</h4>
+                                <p>Prime business locations</p>
+                                <div class="property-details">
+                                    <span><i class="fas fa-map-marker-alt"></i> Hinjewadi, Pune</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- Small Images -->
+                <div class="gallery-item gallery-small" data-category="residential">
+                    <div class="gallery-image">
+                        <img src="images/real.jpg" alt="Cozy Homes">
+                        <div class="gallery-overlay">
+                            <div class="overlay-content">
+                                <h5>Cozy Homes</h5>
+                                <p>Perfect for families</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item gallery-small" data-category="luxury">
+                    <div class="gallery-image">
+                        <img src="images/real1.jpg" alt="Penthouse Suites">
+                        <div class="gallery-overlay">
+                            <div class="overlay-content">
+                                <h5>Penthouse Suites</h5>
+                                <p>Sky-high luxury</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item gallery-small" data-category="commercial">
+                    <div class="gallery-image">
+                        <img src="images/real3.jpg" alt="Office Complexes">
+                        <div class="gallery-overlay">
+                            <div class="overlay-content">
+                                <h5>Office Complexes</h5>
+                                <p>Modern workspaces</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- View More Button -->
+            <div class="text-center mt-5">
+                <button class="btn btn-primary btn-lg" id="viewMoreGallery">
+                    <i class="fas fa-images"></i> View Complete Gallery
+                </button>
             </div>
         </div>
     </section>

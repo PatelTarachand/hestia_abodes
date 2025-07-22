@@ -149,13 +149,93 @@ $(document).ready(function() {
         }
         scrollTimeout = setTimeout(function() {
             checkPropertiesScroll();
+            checkGalleryScroll();
         }, 10);
     });
 
     // Check on page load
     setTimeout(function() {
         checkPropertiesScroll();
+        checkGalleryScroll();
     }, 500);
+
+    // ===== GALLERY SCROLL ANIMATION =====
+    function checkGalleryScroll() {
+        // Animate section title first
+        var gallerySection = $('.gallery-section');
+        if (gallerySection.length && !gallerySection.hasClass('title-visible')) {
+            var sectionTop = gallerySection.offset().top;
+            var viewportTop = $(window).scrollTop();
+            var triggerPoint = viewportTop + ($(window).height() * 0.8);
+
+            if (sectionTop < triggerPoint) {
+                gallerySection.addClass('title-visible');
+            }
+        }
+
+        // Animate gallery items with creative timing
+        $('.gallery-item').each(function(index) {
+            var $this = $(this);
+            var elementTop = $this.offset().top;
+            var elementBottom = elementTop + $this.outerHeight();
+            var viewportTop = $(window).scrollTop();
+            var viewportBottom = viewportTop + $(window).height();
+            var triggerPoint = viewportTop + ($(window).height() * 0.75);
+
+            // Check if element is in viewport with trigger point
+            if (elementTop < triggerPoint && elementBottom > viewportTop && !$this.hasClass('animate-in')) {
+                // Different delays based on item size for interesting effect
+                var delay = 0;
+                if ($this.hasClass('gallery-large')) {
+                    delay = 200; // Large items animate first
+                } else if ($this.hasClass('gallery-medium')) {
+                    delay = 400 + (index * 100); // Medium items follow
+                } else {
+                    delay = 600 + (index * 80); // Small items last
+                }
+
+                setTimeout(function() {
+                    $this.addClass('animate-in');
+                }, delay);
+            }
+        });
+    }
+
+    // ===== GALLERY FILTER FUNCTIONALITY =====
+    $('.filter-btn').click(function() {
+        var filter = $(this).data('filter');
+
+        // Update active button
+        $('.filter-btn').removeClass('active');
+        $(this).addClass('active');
+
+        // Filter gallery items
+        $('.gallery-item').each(function() {
+            var $item = $(this);
+            var category = $item.data('category');
+
+            if (filter === 'all' || category === filter) {
+                $item.removeClass('filter-hidden').addClass('filter-visible');
+            } else {
+                $item.removeClass('filter-visible').addClass('filter-hidden');
+            }
+        });
+    });
+
+    // ===== VIEW MORE GALLERY BUTTON =====
+    $('#viewMoreGallery').click(function() {
+        // Add more gallery items or redirect to full gallery page
+        var button = $(this);
+        var originalText = button.html();
+
+        button.html('<i class="fas fa-spinner fa-spin"></i> Loading...').prop('disabled', true);
+
+        setTimeout(function() {
+            // Simulate loading more content
+            alert('Full gallery feature will be implemented soon!');
+            button.html(originalText).prop('disabled', false);
+        }, 1500);
+    });
 
     // ===== SEE MORE PROPERTIES BUTTON =====
     $('#seeMoreProperties').click(function() {
