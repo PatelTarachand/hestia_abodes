@@ -597,6 +597,17 @@ body.sidebar-open {
     background: var(--accent-color);
 }
 
+.properties-section .section-title {
+    opacity: 0;
+    transform: translateY(-30px);
+    transition: all 0.8s ease;
+}
+
+.properties-section.title-visible .section-title {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 .property-showcase {
     margin-top: 80px;
     margin-bottom: 80px;
@@ -623,34 +634,111 @@ body.sidebar-open {
 /* Animation states for property content and images */
 .property-info {
     opacity: 0;
-    transform: translateX(-100px);
-    transition: all 0.8s ease 0.2s;
+    transform: translateY(-80px);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s;
 }
 
 .property-image-main {
     opacity: 0;
-    transform: translateX(100px);
-    transition: all 0.8s ease 0.4s;
+    transform: translateY(80px);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s;
 }
 
 /* Reverse animations for right-to-left layout */
 .property-reverse .property-info {
-    transform: translateX(100px);
+    transform: translateY(80px);
 }
 
 .property-reverse .property-image-main {
-    transform: translateX(-100px);
+    transform: translateY(-80px);
 }
 
 /* Visible state animations */
 .property-showcase.animate-in .property-info {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0);
 }
 
 .property-showcase.animate-in .property-image-main {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0);
+}
+
+/* Additional animation effects */
+.property-showcase.animate-in .property-number {
+    animation: fadeInScale 0.6s ease 0.1s both;
+}
+
+.property-showcase.animate-in .property-name {
+    animation: slideInFromTop 0.8s ease 0.3s both;
+}
+
+.property-showcase.animate-in .property-type {
+    animation: fadeInUp 0.6s ease 0.5s both;
+}
+
+.property-showcase.animate-in .property-location {
+    animation: fadeInUp 0.6s ease 0.6s both;
+}
+
+.property-showcase.animate-in .property-description {
+    animation: fadeInUp 0.6s ease 0.7s both;
+}
+
+.property-showcase.animate-in .property-price {
+    animation: slideInFromBottom 0.8s ease 0.8s both;
+}
+
+/* Keyframe animations */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideInFromTop {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInFromBottom {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Individual element animation trigger */
+.animate-element {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transform: scale(1) !important;
 }
 
 /* First property visible by default */
@@ -666,8 +754,8 @@ body.sidebar-open {
     flex-direction: column;
     justify-content: center;
     opacity: 0;
-    transform: translateX(-100px);
-    transition: all 0.8s ease 0.2s;
+    transform: translateY(-80px);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s;
 }
 
 .property-number {
@@ -676,6 +764,8 @@ body.sidebar-open {
     margin-bottom: 20px;
     font-weight: 300;
     letter-spacing: 2px;
+    opacity: 0;
+    transform: scale(0.8);
 }
 
 .property-name {
@@ -685,6 +775,8 @@ body.sidebar-open {
     margin-bottom: 20px;
     line-height: 1.1;
     font-style: italic;
+    opacity: 0;
+    transform: translateY(-50px);
 }
 
 .property-type {
@@ -694,6 +786,8 @@ body.sidebar-open {
     letter-spacing: 2px;
     margin-bottom: 10px;
     font-weight: 500;
+    opacity: 0;
+    transform: translateY(30px);
 }
 
 .property-location {
@@ -701,6 +795,8 @@ body.sidebar-open {
     color: var(--text-light);
     font-weight: 300;
     margin-bottom: 20px;
+    opacity: 0;
+    transform: translateY(30px);
 }
 
 .property-description {
@@ -709,6 +805,8 @@ body.sidebar-open {
     line-height: 1.6;
     margin-bottom: 30px;
     font-weight: 300;
+    opacity: 0;
+    transform: translateY(30px);
 }
 
 .property-price {
@@ -716,6 +814,8 @@ body.sidebar-open {
     color: var(--text-dark);
     font-weight: 600;
     font-family: 'Playfair Display', serif;
+    opacity: 0;
+    transform: translateY(50px);
 }
 
 .property-image-main {
@@ -723,8 +823,8 @@ body.sidebar-open {
     height: 500px;
     overflow: hidden;
     opacity: 0;
-    transform: translateX(100px);
-    transition: all 0.8s ease 0.4s;
+    transform: translateY(80px);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s;
 }
 
 .property-image-main img {
@@ -1921,19 +2021,34 @@ body.sidebar-open {
 
     /* Reduce animation distance on mobile */
     .property-info {
-        transform: translateX(-50px);
+        transform: translateY(-40px);
     }
 
     .property-image-main {
-        transform: translateX(50px);
+        transform: translateY(40px);
     }
 
     .property-reverse .property-info {
-        transform: translateX(50px);
+        transform: translateY(40px);
     }
 
     .property-reverse .property-image-main {
-        transform: translateX(-50px);
+        transform: translateY(-40px);
+    }
+
+    /* Reduce individual element animation distances */
+    .property-name {
+        transform: translateY(-30px);
+    }
+
+    .property-type,
+    .property-location,
+    .property-description {
+        transform: translateY(20px);
+    }
+
+    .property-price {
+        transform: translateY(30px);
     }
 
     /* Contact Section Mobile */

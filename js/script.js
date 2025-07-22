@@ -82,23 +82,61 @@ $(document).ready(function() {
 
     // ===== PROPERTIES SCROLL ANIMATION =====
     function checkPropertiesScroll() {
+        // Animate section title first
+        var propertiesSection = $('.properties-section');
+        if (propertiesSection.length && !propertiesSection.hasClass('title-visible')) {
+            var sectionTop = propertiesSection.offset().top;
+            var viewportTop = $(window).scrollTop();
+            var triggerPoint = viewportTop + ($(window).height() * 0.8);
+
+            if (sectionTop < triggerPoint) {
+                propertiesSection.addClass('title-visible');
+            }
+        }
+
         $('.property-showcase').each(function() {
             var $this = $(this);
             var elementTop = $this.offset().top;
             var elementBottom = elementTop + $this.outerHeight();
             var viewportTop = $(window).scrollTop();
             var viewportBottom = viewportTop + $(window).height();
-            var triggerPoint = viewportTop + ($(window).height() * 0.8);
+            var triggerPoint = viewportTop + ($(window).height() * 0.75);
 
             // Check if element is in viewport with trigger point
-            if (elementTop < triggerPoint && elementBottom > viewportTop) {
+            if (elementTop < triggerPoint && elementBottom > viewportTop && !$this.hasClass('animate-in')) {
                 // Add visible class for height/opacity
                 $this.addClass('property-visible');
 
                 // Add animation class with slight delay for staggered effect
                 setTimeout(function() {
                     $this.addClass('animate-in');
-                }, 100);
+
+                    // Trigger individual element animations with staggered delays
+                    setTimeout(function() {
+                        $this.find('.property-number').addClass('animate-element');
+                    }, 100);
+
+                    setTimeout(function() {
+                        $this.find('.property-name').addClass('animate-element');
+                    }, 300);
+
+                    setTimeout(function() {
+                        $this.find('.property-type').addClass('animate-element');
+                    }, 500);
+
+                    setTimeout(function() {
+                        $this.find('.property-location').addClass('animate-element');
+                    }, 600);
+
+                    setTimeout(function() {
+                        $this.find('.property-description').addClass('animate-element');
+                    }, 700);
+
+                    setTimeout(function() {
+                        $this.find('.property-price').addClass('animate-element');
+                    }, 800);
+
+                }, 150);
             }
         });
     }
