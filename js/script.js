@@ -1,5 +1,7 @@
 $(document).ready(function() {
     console.log('jQuery loaded and ready'); // Debug log
+    console.log('Sidebar element exists:', $('#sidebar').length > 0);
+    console.log('Toggle buttons exist:', $('#sidebarToggle').length, $('#mobileMenuToggle').length);
 
     // ===== NAVIGATION SCROLL EFFECT =====
     $(window).scroll(function() {
@@ -11,26 +13,41 @@ $(document).ready(function() {
     });
 
     // ===== SIDEBAR TOGGLE =====
-    $(document).on('click', '#sidebarToggle, #mobileMenuToggle', function(e) {
-        e.preventDefault();
-        console.log('Sidebar toggle clicked'); // Debug log
+    function openSidebar() {
+        console.log('Opening sidebar...');
         $('#sidebar').addClass('active');
         $('#sidebarOverlay').addClass('active');
         $('body').addClass('sidebar-open');
+    }
+
+    function closeSidebar() {
+        console.log('Closing sidebar...');
+        $('#sidebar').removeClass('active');
+        $('#sidebarOverlay').removeClass('active');
+        $('body').removeClass('sidebar-open');
+    }
+
+    // Bind click events
+    $(document).on('click', '#sidebarToggle', function(e) {
+        e.preventDefault();
+        console.log('Desktop sidebar toggle clicked');
+        openSidebar();
+    });
+
+    $(document).on('click', '#mobileMenuToggle', function(e) {
+        e.preventDefault();
+        console.log('Mobile sidebar toggle clicked');
+        openSidebar();
     });
 
     $(document).on('click', '#sidebarClose, #sidebarOverlay', function() {
         console.log('Sidebar close clicked'); // Debug log
-        $('#sidebar').removeClass('active');
-        $('#sidebarOverlay').removeClass('active');
-        $('body').removeClass('sidebar-open');
+        closeSidebar();
     });
 
-    // Close sidebar when clicking on menu items
-    $(document).on('click', '.sidebar-menu a', function() {
-        $('#sidebar').removeClass('active');
-        $('#sidebarOverlay').removeClass('active');
-        $('body').removeClass('sidebar-open');
+    // Close sidebar when clicking on menu items (only internal links)
+    $(document).on('click', '.sidebar-menu a[href^="#"]', function() {
+        closeSidebar();
     });
 
     // ===== SMOOTH SCROLLING =====
