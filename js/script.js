@@ -27,7 +27,7 @@ $(document).ready(function() {
         $('body').removeClass('sidebar-open');
     }
 
-    // Bind click events
+    // Bind click events with multiple methods
     $(document).on('click', '#sidebarToggle', function(e) {
         e.preventDefault();
         console.log('Desktop sidebar toggle clicked');
@@ -37,6 +37,19 @@ $(document).ready(function() {
     $(document).on('click', '#mobileMenuToggle', function(e) {
         e.preventDefault();
         console.log('Mobile sidebar toggle clicked');
+        openSidebar();
+    });
+
+    // Direct binding as fallback
+    $('#sidebarToggle').click(function(e) {
+        e.preventDefault();
+        console.log('Direct desktop sidebar toggle clicked');
+        openSidebar();
+    });
+
+    $('#mobileMenuToggle').click(function(e) {
+        e.preventDefault();
+        console.log('Direct mobile sidebar toggle clicked');
         openSidebar();
     });
 
