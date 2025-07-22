@@ -518,6 +518,20 @@ $(document).ready(function() {
         );
     });
 
+    // ===== SIDEBAR DROPDOWN FUNCTIONALITY =====
+    $(document).ready(function() {
+        $('.dropdown-toggle').click(function(e) {
+            e.preventDefault();
+            var $dropdown = $(this).closest('.menu-dropdown');
+
+            // Close other dropdowns
+            $('.menu-dropdown').not($dropdown).removeClass('active');
+
+            // Toggle current dropdown
+            $dropdown.toggleClass('active');
+        });
+    });
+
     // ===== SEE MORE PROPERTIES BUTTON =====
     $('#seeMoreProperties').click(function() {
         var hiddenProperties = $('.property-hidden');
