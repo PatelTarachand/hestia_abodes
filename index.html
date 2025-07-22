@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hestia Abodes - Premium Real Estate Consultancy in Pune</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top transparent-nav">
+        <div class="container">
+            <!-- Logo -->
+            <a class="navbar-brand" href="#home">
+                <span class="brand-text">Hestia Abodes</span>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="navbar-nav d-none d-lg-flex ms-auto align-items-center">
+                <a class="nav-link" href="#services">Services</a>
+                <a class="nav-link" href="#properties">Our Properties</a>
+                <a class="nav-link" href="#gallery">Gallery</a>
+                <a class="nav-link" href="tel:+917038204841" title="Call Us">
+                    <i class="fas fa-phone"></i>
+                </a>
+                <a class="nav-link" href="#" id="sidebarToggle" title="Menu">
+                    <i class="fas fa-bars"></i>
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="navbar-toggler d-lg-none" type="button" id="mobileMenuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <span class="sidebar-brand">Hestia Abodes</span>
+            <button class="btn-close" id="sidebarClose"></button>
+        </div>
+        <div class="sidebar-content">
+            <ul class="sidebar-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#properties">Our Properties</a></li>
+                <li><a href="#gallery">Property Gallery</a></li>
+                <li><a href="#about">About Us</a></li>
+            </ul>
+
+            <hr class="sidebar-divider">
+
+            <ul class="sidebar-menu">
+                <li><a href="#contact">Contact Us</a></li>
+                <li><a href="tel:+917038204841">Call Now</a></li>
+                <li><a href="https://wa.me/917038204841" target="_blank">WhatsApp</a></li>
+                <li><a href="mailto:info@hestiaabodes.com">Email Us</a></li>
+            </ul>
+
+            <hr class="sidebar-divider">
+
+            <ul class="sidebar-menu">
+                <li><a href="#residential">Residential Properties</a></li>
+                <li><a href="#commercial">Commercial Properties</a></li>
+                <li><a href="#investment">Investment Opportunities</a></li>
+            </ul>
+
+            <hr class="sidebar-divider">
+
+            <div class="social-section">
+                <span>Follow Us</span>
+                <div class="social-icons">
+                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Hero Slider Section -->
+    <section id="home" class="hero-section">
+        <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+            </div>
+
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="hero-slide" style="background-image: url('images/real.jpg');">
+                        <div class="hero-overlay"></div>
+                        <div class="container">
+                            <div class="hero-content">
+                                <h1 class="hero-title">Premium Real Estate<br>Consultancy in Pune</h1>
+                                <p class="hero-subtitle">Discover exceptional properties with our expert guidance and personalized service</p>
+                                <div class="hero-buttons">
+                                    <a href="#properties" class="btn btn-primary">View Properties</a>
+                                    <a href="#contact" class="btn btn-outline-light">Contact Us</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="hero-slide" style="background-image: url('images/real1.jpg');">
+                        <div class="hero-overlay"></div>
+                        <div class="container">
+                            <div class="hero-content">
+                                <h1 class="hero-title">Luxury Living<br>Redefined</h1>
+                                <p class="hero-subtitle">Experience the finest properties in Pune's most prestigious locations</p>
+                                <div class="hero-buttons">
+                                    <a href="#properties" class="btn btn-primary">View Properties</a>
+                                    <a href="#contact" class="btn btn-outline-light">Contact Us</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="hero-slide" style="background-image: url('images/real3.jpg');">
+                        <div class="hero-overlay"></div>
+                        <div class="container">
+                            <div class="hero-content">
+                                <h1 class="hero-title">Your Dream Home<br>Awaits</h1>
+                                <p class="hero-subtitle">21+ years of excellence in delivering exceptional real estate solutions</p>
+                                <div class="hero-buttons">
+                                    <a href="#properties" class="btn btn-primary">View Properties</a>
+                                    <a href="#contact" class="btn btn-outline-light">Contact Us</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Our SERVICES</h2>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="images/real.jpg" alt="Real Estate Investing">
+                    </div>
+                    <div class="service-content">
+                        <h4>REAL ESTATE INVESTING</h4>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="images/real1.jpg" alt="Property Valuation">
+                    </div>
+                    <div class="service-content">
+                        <h4>PROPERTY VALUATION EXPERTISE</h4>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="images/real3.jpg" alt="Real Estate Solutions">
+                    </div>
+                    <div class="service-content">
+                        <h4>REAL ESTATE SOLUTIONS</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Properties Section -->
+    <section id="properties" class="properties-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Featured PROPERTIES</h2>
+            </div>
+
+            <div class="property-showcase">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="property-info">
+                            <div class="property-number">NO. 1</div>
+                            <h3 class="property-name">THE PAVILION HOUSE</h3>
+                            <div class="property-type">SINGLE FAMILY HOME</div>
+                            <div class="property-location">Pune</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="property-image-main">
+                            <img src="images/real1.jpg" alt="The Pavilion House">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Property Gallery Section -->
+    <section id="gallery" class="gallery-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Property GALLERY</h2>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="images/real.jpg" alt="Luxury Property 1">
+                        <div class="gallery-overlay">
+                            <h4>Premium Residences</h4>
+                            <p>Luxury Living Spaces</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="images/real1.jpg" alt="Luxury Property 2">
+                        <div class="gallery-overlay">
+                            <h4>Modern Architecture</h4>
+                            <p>Contemporary Design</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="images/real3.jpg" alt="Luxury Property 3">
+                        <div class="gallery-overlay">
+                            <h4>Elegant Interiors</h4>
+                            <p>Sophisticated Spaces</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="about-content">
+                        <h2 class="section-title">About Hestia Abodes</h2>
+                        <p class="about-text">
+                            Hestia Abodes is a premium real estate consultancy firm based in Pune, dedicated to providing
+                            exceptional service and expert guidance in your property journey. With over 21 years of experience,
+                            we have established ourselves as the most trusted name in Pune's real estate market.
+                        </p>
+                        <p class="about-text">
+                            Our commitment to transparency, personalized service, and deep market knowledge has helped
+                            over 500 families find their dream homes and make sound investment decisions.
+                        </p>
+                        <div class="about-stats">
+                            <div class="stat-item">
+                                <div class="stat-number">21+</div>
+                                <div class="stat-label">Years Experience</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">500+</div>
+                                <div class="stat-label">Homes Delivered</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">100%</div>
+                                <div class="stat-label">Client Satisfaction</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="about-image">
+                        <img src="images/real3.jpg" alt="About Hestia Abodes">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="contact-content text-center">
+                <h2 class="section-title">Contact</h2>
+                <div class="contact-info-minimal">
+                    <div class="contact-item">
+                        <p>Phone: <a href="tel:+917038204841">+91 70382 04841</a></p>
+                    </div>
+                    <div class="contact-item">
+                        <p>Email: <a href="mailto:info@hestiaabodes.com">info@hestiaabodes.com</a></p>
+                    </div>
+                    <div class="contact-item">
+                        <p>Location: Pune, Maharashtra, India</p>
+                    </div>
+                </div>
+                <div class="contact-cta">
+                    <a href="#properties" class="btn btn-primary">View Properties</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content text-center">
+                <div class="footer-brand">
+                    <span>Hestia Abodes</span>
+                </div>
+                <p class="footer-copyright">
+                    &copy; 2025 Hestia Abodes. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <div class="whatsapp-float">
+        <a href="https://wa.me/917038204841" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
+</body>
+</html>
