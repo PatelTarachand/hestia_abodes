@@ -54,9 +54,9 @@
                             <ul class="footer-links">
                                 <li><a href="index.php">Home</a></li>
                                 <li><a href="about.php">About Us</a></li>
-                                <li><a href="index.php#services">Services</a></li>
+                                <li><a href="services.php">Services</a></li>
+                                <li><a href="why-choose-us.php">Why Choose Us</a></li>
                                 <li><a href="index.php#properties">Properties</a></li>
-                                <li><a href="index.php#gallery">Gallery</a></li>
                                 <li><a href="index.php#contact">Contact</a></li>
                             </ul>
                         </div>

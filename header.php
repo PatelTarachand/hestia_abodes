@@ -28,8 +28,8 @@
             <div class="navbar-nav d-none d-lg-flex ms-auto align-items-center">
                 <a class="nav-link" href="index.php">Home</a>
                 <a class="nav-link" href="about.php">About</a>
-                <a class="nav-link" href="index.php#services">Services</a>
-                <a class="nav-link" href="index.php#properties">Properties</a>
+                <a class="nav-link" href="services.php">Services</a>
+                <a class="nav-link" href="why-choose-us.php">Why Choose Us</a>
                 <a class="nav-link" href="tel:+917038204841" title="Call Us">
                     <i class="fas fa-phone"></i>
                 </a>
@@ -58,6 +58,8 @@
             <ul class="sidebar-menu">
                 <li><a href="index.php">Home</a></li>
                 <li><a href="about.php">About Us</a></li>
+                <li><a href="services.php">Our Services</a></li>
+                <li><a href="why-choose-us.php">Why Choose Us</a></li>
                 <li class="menu-dropdown">
                     <a href="index.php#properties" class="dropdown-toggle">Projects <i class="fas fa-chevron-down"></i></a>
                     <ul class="dropdown-menu">
@@ -65,7 +67,6 @@
                         <li><a href="commercial.html">Commercial</a></li>
                     </ul>
                 </li>
-                <li><a href="services.php">Our Services</a></li>
                 <li><a href="blog.html">Blog & Insights</a></li>
             </ul>
 
