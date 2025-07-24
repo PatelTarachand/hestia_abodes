@@ -36,19 +36,16 @@ $(document).ready(function() {
         lastScrollTop = scrollTop;
     });
 
-    // ===== NAVBAR SHOW ON HOVER WHEN HIDDEN =====
-    navbar.hover(
-        function() {
-            // Show navbar on hover when hidden
-            if ($(this).hasClass('nav-hidden')) {
-                $(this).addClass('nav-hover-show');
-            }
-        },
-        function() {
-            // Remove hover show class
-            $(this).removeClass('nav-hover-show');
+    // ===== NAVBAR SHOW ON HOVER WHEN HIDDEN - Pure jQuery =====
+    navbar.on('mouseenter', function() {
+        // Show navbar on hover when hidden
+        if ($(this).hasClass('nav-hidden')) {
+            $(this).addClass('nav-hover-show');
         }
-    );
+    }).on('mouseleave', function() {
+        // Remove hover show class
+        $(this).removeClass('nav-hover-show');
+    });
 
     // ===== SIDEBAR TOGGLE =====
     function openSidebar() {
@@ -101,10 +98,10 @@ $(document).ready(function() {
         closeSidebar();
     });
 
-    // ===== SMOOTH SCROLLING =====
-    $('a[href^="#"]').click(function(e) {
+    // ===== SMOOTH SCROLLING - Pure jQuery =====
+    $('a[href^="#"]').on('click', function(e) {
         e.preventDefault();
-        var target = $(this.getAttribute('href'));
+        var target = $($(this).attr('href')); // Pure jQuery version
         if (target.length) {
             $('html, body').stop().animate({
                 scrollTop: target.offset().top - 80
@@ -120,8 +117,8 @@ $(document).ready(function() {
 
     // ===== PROPERTIES SCROLL ANIMATION =====
     function checkPropertiesScroll() {
-        // Animate section title first
-        var propertiesSection = $('.properties-section');
+        // Handle both regular and index properties sections
+        var propertiesSection = $('.properties-section, .index-properties-section');
         if (propertiesSection.length && !propertiesSection.hasClass('title-visible')) {
             var sectionTop = propertiesSection.offset().top;
             var viewportTop = $(window).scrollTop();
@@ -132,7 +129,7 @@ $(document).ready(function() {
             }
         }
 
-        $('.property-showcase').each(function() {
+        $('.property-showcase, .index-property-showcase').each(function() {
             var $this = $(this);
             var elementTop = $this.offset().top;
             var elementBottom = elementTop + $this.outerHeight();
@@ -149,29 +146,29 @@ $(document).ready(function() {
                 setTimeout(function() {
                     $this.addClass('animate-in');
 
-                    // Trigger individual element animations with staggered delays
+                    // Trigger individual element animations with staggered delays for both regular and index classes
                     setTimeout(function() {
-                        $this.find('.property-number').addClass('animate-element');
+                        $this.find('.property-number, .index-property-number').addClass('animate-element');
                     }, 100);
 
                     setTimeout(function() {
-                        $this.find('.property-name').addClass('animate-element');
+                        $this.find('.property-name, .index-property-name').addClass('animate-element');
                     }, 300);
 
                     setTimeout(function() {
-                        $this.find('.property-type').addClass('animate-element');
+                        $this.find('.property-type, .index-property-type').addClass('animate-element');
                     }, 500);
 
                     setTimeout(function() {
-                        $this.find('.property-location').addClass('animate-element');
+                        $this.find('.property-location, .index-property-location').addClass('animate-element');
                     }, 600);
 
                     setTimeout(function() {
-                        $this.find('.property-description').addClass('animate-element');
+                        $this.find('.property-description, .index-property-description').addClass('animate-element');
                     }, 700);
 
                     setTimeout(function() {
-                        $this.find('.property-price').addClass('animate-element');
+                        $this.find('.property-price, .index-property-price').addClass('animate-element');
                     }, 800);
 
                 }, 150);
@@ -190,6 +187,9 @@ $(document).ready(function() {
             checkGalleryScroll();
             checkAboutScroll();
             checkContactScroll();
+            animateIndexAboutSection();
+
+            // These functions are now consolidated in the main scroll handler
         }, 10);
     });
 
@@ -199,9 +199,17 @@ $(document).ready(function() {
         checkGalleryScroll();
         checkAboutScroll();
         checkContactScroll();
+        animateIndexAboutSection();
+
+        // Initialize About section statistics immediately
+        animateStatCards();
+        animateIndexStatCards();
+
+        // Force gallery animation
+        forceGalleryAnimation();
     }, 500);
 
-    // ===== GALLERY SCROLL ANIMATION =====
+    // ===== ENHANCED GALLERY SCROLL ANIMATION =====
     function checkGalleryScroll() {
         // Animate section title first
         var gallerySection = $('.gallery-section');
@@ -212,35 +220,64 @@ $(document).ready(function() {
 
             if (sectionTop < triggerPoint) {
                 gallerySection.addClass('title-visible');
+                console.log('Gallery section title made visible');
             }
         }
 
-        // Animate gallery items with creative timing
-        $('.gallery-item').each(function(index) {
+        // Force animate gallery items immediately if they're in view
+        $('.gallery-item:not(.animate-in)').each(function(index) {
             var $this = $(this);
+
+            // Skip hidden items
+            if ($this.hasClass('filter-hidden') || $this.hasClass('hidden')) {
+                return;
+            }
+
             var elementTop = $this.offset().top;
             var elementBottom = elementTop + $this.outerHeight();
             var viewportTop = $(window).scrollTop();
             var viewportBottom = viewportTop + $(window).height();
-            var triggerPoint = viewportTop + ($(window).height() * 0.75);
+            var triggerPoint = viewportTop + ($(window).height() * 0.6); // More aggressive trigger
 
             // Check if element is in viewport with trigger point
-            if (elementTop < triggerPoint && elementBottom > viewportTop && !$this.hasClass('animate-in')) {
+            if (elementTop < triggerPoint && elementBottom > viewportTop) {
                 // Different delays based on item size for interesting effect
                 var delay = 0;
                 if ($this.hasClass('gallery-large')) {
-                    delay = 200; // Large items animate first
+                    delay = 100; // Large items animate first
                 } else if ($this.hasClass('gallery-medium')) {
-                    delay = 400 + (index * 100); // Medium items follow
+                    delay = 200 + (index * 100); // Medium items follow
                 } else {
-                    delay = 600 + (index * 80); // Small items last
+                    delay = 300 + (index * 80); // Small items last
                 }
 
                 setTimeout(function() {
-                    $this.addClass('animate-in');
+                    if ($this.length) {
+                        $this.addClass('animate-in');
+                        console.log('Gallery item animated:', index);
+                    }
                 }, delay);
             }
         });
+    }
+
+    // ===== FORCE GALLERY ANIMATION ON PAGE LOAD =====
+    function forceGalleryAnimation() {
+        if ($('.gallery-section').length > 0) {
+            console.log('Forcing gallery animations...');
+
+            // Make section title visible immediately
+            $('.gallery-section').addClass('title-visible');
+
+            // Animate all visible gallery items
+            $('.gallery-item:not(.filter-hidden):not(.hidden)').each(function(index) {
+                var $this = $(this);
+                setTimeout(function() {
+                    $this.addClass('animate-in');
+                    console.log('Force animated gallery item:', index);
+                }, index * 200);
+            });
+        }
     }
 
     // ===== GALLERY FILTER FUNCTIONALITY =====
@@ -300,16 +337,66 @@ $(document).ready(function() {
 
     // ===== STATISTICS CARDS ANIMATION =====
     function animateStatCards() {
-        $('.stat-card').each(function(index) {
+        // Handle both regular stat cards and index-specific stat cards
+        $('.stat-card, .index-stat-card').each(function() {
             var $this = $(this);
-            setTimeout(function() {
-                $this.addClass('animate-in');
+            // Cards are already visible, just add animate-in class for any additional effects
+            $this.addClass('animate-in');
 
-                // Start counter animation after card appears
+            // Ensure the numbers show their final values immediately
+            var $number = $this.find('.stat-number, .index-stat-number');
+            var targetValue = parseInt($this.data('count'));
+
+            if (targetValue === 15) {
+                $number.text('15');
+            } else if (targetValue === 500) {
+                $number.text('500');
+            } else if (targetValue === 5000) {
+                $number.text('5,000+');
+            } else if (targetValue === 25) {
+                $number.text('25');
+            }
+        });
+    }
+
+    // ===== INDEX ABOUT SECTION SPECIFIC ANIMATION =====
+    function animateIndexAboutSection() {
+        var indexAboutSection = $('.index-about-section');
+        if (indexAboutSection.length && !indexAboutSection.hasClass('animate-in')) {
+            var sectionTop = indexAboutSection.offset().top;
+            var viewportTop = $(window).scrollTop();
+            var triggerPoint = viewportTop + ($(window).height() * 0.7);
+
+            if (sectionTop < triggerPoint) {
+                indexAboutSection.addClass('animate-in');
+
+                // Trigger index statistics cards animation
                 setTimeout(function() {
-                    animateCardCounter($this);
+                    animateIndexStatCards();
                 }, 300);
-            }, index * 150);
+            }
+        }
+    }
+
+    // ===== INDEX STATISTICS CARDS ANIMATION =====
+    function animateIndexStatCards() {
+        $('.index-stat-card').each(function() {
+            var $this = $(this);
+            $this.addClass('animate-in');
+
+            // Ensure the numbers show their final values immediately
+            var $number = $this.find('.index-stat-number');
+            var targetValue = parseInt($this.data('count'));
+
+            if (targetValue === 15) {
+                $number.text('15');
+            } else if (targetValue === 500) {
+                $number.text('500');
+            } else if (targetValue === 5000) {
+                $number.text('5,000+');
+            } else if (targetValue === 25) {
+                $number.text('25');
+            }
         });
     }
 
@@ -533,12 +620,12 @@ $(document).ready(function() {
     });
 
     // ===== SEE MORE PROPERTIES BUTTON =====
-    $('#seeMoreProperties').click(function() {
-        var hiddenProperties = $('.property-hidden');
+    $('#seeMoreProperties, #indexSeeMoreProperties').click(function() {
+        var hiddenProperties = $('.property-hidden, .index-property-hidden');
 
         if (hiddenProperties.length > 0) {
             // Show hidden properties with animation
-            hiddenProperties.removeClass('property-hidden').addClass('property-visible');
+            hiddenProperties.removeClass('property-hidden index-property-hidden').addClass('property-visible index-property-visible');
 
             // Change button text
             $(this).text('View All Properties').removeClass('btn-outline-dark').addClass('btn-primary');
@@ -551,7 +638,7 @@ $(document).ready(function() {
             }, 300);
         } else {
             // Redirect to properties page or show more content
-            window.location.href = '#contact'; // Or redirect to a properties page
+            $(location).attr('href', '#contact'); // Pure jQuery version
         }
     });
 
@@ -617,22 +704,49 @@ $(document).ready(function() {
     // ===== FORM HANDLING =====
     $('.contact-form').submit(function(e) {
         e.preventDefault();
-        
-        // Basic form validation
+
+        // Enhanced form validation with location field
         var isValid = true;
+        var formData = {};
+
         $(this).find('input[required], textarea[required], select[required]').each(function() {
-            if (!$(this).val().trim()) {
+            var $field = $(this);
+            var fieldName = $field.attr('name');
+            var fieldValue = $field.val().trim();
+
+            if (!fieldValue) {
                 isValid = false;
-                $(this).addClass('is-invalid');
+                $field.addClass('is-invalid');
+                $field.closest('.input-wrapper, .select-wrapper, .textarea-wrapper').addClass('error');
             } else {
-                $(this).removeClass('is-invalid');
+                $field.removeClass('is-invalid');
+                $field.closest('.input-wrapper, .select-wrapper, .textarea-wrapper').removeClass('error');
+                formData[fieldName] = fieldValue;
+            }
+        });
+
+        // Collect optional fields (like location and budget)
+        $(this).find('input:not([required]), select:not([required])').each(function() {
+            var $field = $(this);
+            var fieldName = $field.attr('name');
+            var fieldValue = $field.val().trim();
+
+            if (fieldValue) {
+                formData[fieldName] = fieldValue;
             }
         });
 
         if (isValid) {
+            console.log('Form Data Submitted:', formData); // For debugging
             // Show success message
             showNotification('Thank you! Your message has been sent successfully.', 'success');
-            $(this)[0].reset();
+
+            // Reset form with proper cleanup
+            setTimeout(function() {
+                $('.contact-form')[0].reset();
+                $('.input-wrapper, .select-wrapper, .textarea-wrapper').removeClass('filled focused error');
+                $('.form-input, .form-select, .form-textarea').removeClass('is-valid is-invalid');
+            }, 1500);
         } else {
             showNotification('Please fill in all required fields.', 'error');
         }
@@ -701,8 +815,8 @@ $(document).ready(function() {
             });
         });
 
-        document.querySelectorAll('img[data-src]').forEach(img => {
-            imageObserver.observe(img);
+        $('img[data-src]').each(function() {
+            imageObserver.observe(this);
         });
     }
 
@@ -768,15 +882,13 @@ $(document).ready(function() {
         }
     );
 
-    // ===== INITIALIZE TOOLTIPS AND POPOVERS =====
-    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-        return new bootstrap.Tooltip(tooltipTriggerEl);
+    // ===== INITIALIZE TOOLTIPS AND POPOVERS - Pure jQuery =====
+    $('[data-bs-toggle="tooltip"]').each(function() {
+        new bootstrap.Tooltip(this);
     });
 
-    var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
-    var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-        return new bootstrap.Popover(popoverTriggerEl);
+    $('[data-bs-toggle="popover"]').each(function() {
+        new bootstrap.Popover(this);
     });
 
     // ===== LOCATION CARDS INTERACTION =====
@@ -819,6 +931,34 @@ $(document).ready(function() {
             $(this).removeClass('is-valid').addClass('is-invalid');
         } else {
             $(this).removeClass('is-valid is-invalid');
+        }
+    });
+
+    // ===== LOCATION FIELD VALIDATION =====
+    $('.contact-form select[name="location"], .contact-form select[name="interest"]').on('change', function() {
+        var $this = $(this);
+        var value = $this.val();
+
+        if (value && value !== '') {
+            $this.removeClass('is-invalid').addClass('is-valid');
+            $this.closest('.select-wrapper').addClass('filled');
+        } else {
+            $this.removeClass('is-valid').addClass('is-invalid');
+            $this.closest('.select-wrapper').removeClass('filled');
+        }
+    });
+
+    // ===== BUDGET FIELD VALIDATION =====
+    $('.contact-form select[name="budget"], .contact-form select[name="budgetRange"]').on('change', function() {
+        var $this = $(this);
+        var value = $this.val();
+
+        if (value && value !== '') {
+            $this.removeClass('is-invalid').addClass('is-valid');
+            $this.closest('.select-wrapper').addClass('filled');
+        } else {
+            $this.removeClass('is-valid').addClass('is-invalid');
+            $this.closest('.select-wrapper').removeClass('filled');
         }
     });
 
@@ -878,10 +1018,9 @@ $(document).ready(function() {
 
 });
 
-// ===== ADDITIONAL ANIMATIONS =====
-// Add CSS classes for animations
-const style = document.createElement('style');
-style.textContent = `
+// ===== ADDITIONAL ANIMATIONS - Pure jQuery =====
+// Add CSS classes for animations using jQuery
+var animationCSS = `
     .animate-in {
         animation: slideInUp 0.6s ease forwards;
     }
@@ -932,4 +1071,505 @@ style.textContent = `
         overflow: hidden;
     }
 `;
-document.head.appendChild(style);
+
+    // Inject CSS using jQuery
+    $('<style>').text(animationCSS).appendTo('head');
+
+    // Initialize How We Work page immediately
+    initHowWeWorkPage();
+
+    // Initialize About section statistics immediately on any page
+    setTimeout(function() {
+        animateStatCards();
+        animateIndexStatCards();
+
+        // Initialize index properties section
+        initIndexPropertiesSection();
+
+        // Initialize modern features section
+        initModernFeaturesSection();
+
+        // Force modern features animation on page load
+        forceModernFeaturesAnimation();
+
+        // Initialize gallery immediately
+        initGallerySection();
+    }, 100);
+
+    // ===== GALLERY SECTION INITIALIZATION =====
+    function initGallerySection() {
+        if ($('.gallery-section').length > 0) {
+            console.log('Gallery section detected, initializing...');
+
+            // Force gallery to be visible immediately
+            setTimeout(function() {
+                forceGalleryAnimation();
+                checkGalleryScroll();
+            }, 200);
+        }
+    }
+
+    // ===== FORCE MODERN FEATURES ANIMATION =====
+    function forceModernFeaturesAnimation() {
+        if ($('.modern-features-section').length > 0) {
+            console.log('Forcing modern features animations...');
+
+            // Force timeline items to animate
+            $('.timeline-item').each(function(index) {
+                var $this = $(this);
+                setTimeout(function() {
+                    $this.css({
+                        'opacity': '1',
+                        'transform': 'translateY(0)'
+                    }).addClass('animate-in');
+                }, index * 400);
+            });
+
+            // Force trust items to animate
+            setTimeout(function() {
+                $('.trust-item').each(function(index) {
+                    var $this = $(this);
+                    setTimeout(function() {
+                        $this.css({
+                            'opacity': '1',
+                            'transform': 'translateY(0)'
+                        }).addClass('animate-in');
+                    }, index * 200);
+                });
+            }, 1600);
+
+            // Force features showcase cards to animate
+            setTimeout(function() {
+                $('.feature-showcase-card').each(function(index) {
+                    var $this = $(this);
+                    setTimeout(function() {
+                        $this.css({
+                            'opacity': '1',
+                            'transform': 'translateY(0)'
+                        }).addClass('animate-in');
+                    }, index * 200);
+                });
+            }, 2400);
+        }
+    }
+
+    // ===== MODERN FEATURES SECTION ANIMATIONS =====
+    function initModernFeaturesSection() {
+        if ($('.modern-features-section').length > 0) {
+            console.log('Modern Features section detected, initializing animations...');
+
+            // Trigger animations immediately for elements in view
+            setTimeout(function() {
+                animateModernFeatures();
+                // Also trigger immediate animations for testing
+                triggerModernFeaturesImmediately();
+            }, 500);
+        }
+    }
+
+    function animateModernFeatures() {
+        // Check if modern features section exists
+        if ($('.modern-features-section').length === 0) {
+            return;
+        }
+
+        // Animate timeline items
+        $('.timeline-item').each(function(index) {
+            var $this = $(this);
+            if ($this.length === 0) return;
+
+            var elementTop = $this.offset().top;
+            var viewportTop = $(window).scrollTop();
+            var triggerPoint = viewportTop + ($(window).height() * 0.7);
+
+            if (elementTop < triggerPoint && !$this.hasClass('animate-in')) {
+                setTimeout(function() {
+                    if ($this.length) {
+                        $this.addClass('animate-in');
+                    }
+                }, index * 200);
+            }
+        });
+
+        // Animate trust indicators
+        $('.trust-item').each(function(index) {
+            var $this = $(this);
+            if ($this.length === 0) return;
+
+            var elementTop = $this.offset().top;
+            var viewportTop = $(window).scrollTop();
+            var triggerPoint = viewportTop + ($(window).height() * 0.8);
+
+            if (elementTop < triggerPoint && !$this.hasClass('animate-in')) {
+                setTimeout(function() {
+                    if ($this.length) {
+                        $this.addClass('animate-in');
+                    }
+                }, index * 100);
+            }
+        });
+
+        // Animate features showcase cards
+        $('.feature-showcase-card').each(function(index) {
+            var $this = $(this);
+            if ($this.length === 0) return;
+
+            var elementTop = $this.offset().top;
+            var viewportTop = $(window).scrollTop();
+            var triggerPoint = viewportTop + ($(window).height() * 0.75);
+
+            if (elementTop < triggerPoint && !$this.hasClass('animate-in')) {
+                setTimeout(function() {
+                    if ($this.length) {
+                        $this.addClass('animate-in');
+                    }
+                }, index * 200);
+            }
+        });
+    }
+
+    // ===== IMMEDIATE ANIMATION TRIGGER FOR MODERN FEATURES =====
+    function triggerModernFeaturesImmediately() {
+        if ($('.modern-features-section').length > 0) {
+            // Trigger all animations immediately for testing
+            $('.timeline-item').each(function(index) {
+                var $this = $(this);
+                setTimeout(function() {
+                    $this.addClass('animate-in');
+                }, index * 300);
+            });
+
+            $('.trust-item').each(function(index) {
+                var $this = $(this);
+                setTimeout(function() {
+                    $this.addClass('animate-in');
+                }, 1000 + (index * 200));
+            });
+
+            $('.comparison-row').each(function(index) {
+                var $this = $(this);
+                setTimeout(function() {
+                    $this.addClass('animate-in');
+                }, 2000 + (index * 150));
+            });
+        }
+    }
+
+    // ===== INDEX PROPERTIES SECTION INITIALIZATION =====
+    function initIndexPropertiesSection() {
+        if ($('.index-properties-section').length > 0) {
+            console.log('Index Properties section detected, initializing animations...');
+
+            // Trigger animations immediately for elements in view
+            setTimeout(function() {
+                checkPropertiesScroll();
+            }, 200);
+        }
+    }
+
+    // ===== HOW WE WORK PAGE ANIMATIONS =====
+    function animateProcessSteps() {
+        // Check if we're on the How We Work page
+        if ($('.process-step').length === 0) return;
+
+        $('.process-step').each(function(index) {
+            var $step = $(this);
+
+            if ($step.hasClass('animate-in')) return;
+
+            var stepTop = $step.offset().top;
+            var windowTop = $(window).scrollTop();
+            var windowBottom = windowTop + $(window).height();
+
+            // More generous trigger - animate if element is in viewport or above
+            if (stepTop < windowBottom + 200) {
+                setTimeout(function() {
+                    $step.addClass('animate-in');
+                }, index * 200);
+            }
+        });
+    }
+
+    // Initialize How We Work animations immediately if on that page
+    function initHowWeWorkPage() {
+        if ($('.process-step').length > 0) {
+            console.log('How We Work page detected, initializing animations...');
+
+            // Trigger animations immediately for elements in view
+            setTimeout(function() {
+                animateProcessSteps();
+                animateHowWeWorkStats();
+            }, 100);
+
+            // Fallback: Force show all elements after 2 seconds if no animations triggered
+            setTimeout(function() {
+                if ($('.process-step.animate-in').length === 0) {
+                    console.log('Fallback: Showing all process steps');
+                    $('.process-step').addClass('animate-in');
+                }
+                if ($('.stat-card.animate-in').length === 0) {
+                    console.log('Fallback: Showing all stat cards');
+                    $('.stat-card').addClass('animate-in');
+                }
+            }, 2000);
+        }
+    }
+
+    function animateHowWeWorkStats() {
+        // Check if we have stat cards
+        if ($('.stat-card').length === 0) return;
+
+        $('.stat-card').each(function(index) {
+            var $card = $(this);
+            var $number = $card.find('.stat-number');
+
+            if ($card.hasClass('counted')) return;
+
+            var cardTop = $card.offset().top;
+            var windowTop = $(window).scrollTop();
+            var windowBottom = windowTop + $(window).height();
+
+            // More generous trigger
+            if (cardTop < windowBottom + 100) {
+                $card.addClass('counted animate-in');
+
+                var finalNumber = $number.text();
+                var numericValue = parseInt(finalNumber.replace(/[^\d]/g, ''));
+
+                if (numericValue > 0) {
+                    setTimeout(function() {
+                        $({ countNum: 0 }).animate({
+                            countNum: numericValue
+                        }, {
+                            duration: 2000,
+                            step: function() {
+                                $number.text(Math.floor(this.countNum));
+                            },
+                            complete: function() {
+                                $number.text(finalNumber);
+                            }
+                        });
+                    }, index * 150);
+                }
+            }
+        });
+    }
+
+    // ===== GALLERY PAGE ANIMATIONS =====
+    function animateGalleryItems() {
+        $('.gallery-item:not(.hidden)').each(function(index) {
+            var $item = $(this);
+
+            if ($item.hasClass('animate-in')) return;
+
+            var itemTop = $item.offset().top;
+            var windowBottom = $(window).scrollTop() + $(window).height();
+
+            if (itemTop < windowBottom - 100) {
+                setTimeout(function() {
+                    $item.addClass('animate-in');
+                }, index * 150);
+            }
+        });
+    }
+
+    // ===== GALLERY FILTERING =====
+    $('.filter-btn').on('click', function() {
+        var $btn = $(this);
+        var filter = $btn.data('filter');
+
+        $('.filter-btn').removeClass('active');
+        $btn.addClass('active');
+
+        // Handle gallery items
+        $('.gallery-item, .project-item').each(function() {
+            var $item = $(this);
+            var itemCategory = $item.data('category');
+
+            if (filter === 'all' || (itemCategory && itemCategory.includes(filter))) {
+                $item.removeClass('hidden');
+            } else {
+                $item.addClass('hidden');
+            }
+        });
+
+        // Handle properties page filtering
+        $('.property-showcase').each(function() {
+            var $item = $(this);
+            var itemCategory = $item.data('category');
+
+            if (filter === 'all' || (itemCategory && itemCategory.includes(filter))) {
+                $item.show().removeClass('hidden');
+            } else {
+                $item.hide().addClass('hidden');
+            }
+        });
+
+        setTimeout(function() {
+            $('.gallery-item, .project-item').removeClass('animate-in');
+            animateGalleryItems();
+        }, 100);
+    });
+
+    // ===== BLOG ANIMATIONS =====
+    function animateBlogCards() {
+        $('.blog-card').each(function(index) {
+            var $card = $(this);
+
+            if ($card.hasClass('animate-in')) return;
+
+            var cardTop = $card.offset().top;
+            var windowBottom = $(window).scrollTop() + $(window).height();
+
+            if (cardTop < windowBottom - 100) {
+                setTimeout(function() {
+                    $card.addClass('animate-in');
+                }, index * 100);
+            }
+        });
+    }
+
+    // ===== NEWSLETTER FORM =====
+    $('.newsletter-form').on('submit', function(e) {
+        e.preventDefault();
+
+        var $form = $(this);
+        var $email = $form.find('input[type="email"]');
+        var $button = $form.find('button');
+        var email = $email.val().trim();
+
+        if (!email || !isValidEmail(email)) {
+            showNotification('Please enter a valid email address.', 'error');
+            return;
+        }
+
+        var originalText = $button.text();
+        $button.text('Subscribing...').prop('disabled', true);
+
+        setTimeout(function() {
+            $button.text('Subscribed!').removeClass('btn-primary').addClass('btn-success');
+            $email.val('');
+            showNotification('Thank you for subscribing!', 'success');
+
+            setTimeout(function() {
+                $button.text(originalText).prop('disabled', false)
+                       .removeClass('btn-success').addClass('btn-primary');
+            }, 3000);
+        }, 1500);
+    });
+
+    function isValidEmail(email) {
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
+    function showNotification(message, type) {
+        $('.notification').remove();
+
+        var iconClass = type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle';
+        var notification = $('<div class="notification notification-' + type + '">' +
+            '<i class="fas ' + iconClass + '"></i>' +
+            '<span>' + message + '</span>' +
+            '<button class="notification-close">&times;</button>' +
+            '</div>');
+
+        $('body').append(notification);
+
+        setTimeout(function() {
+            notification.addClass('show');
+        }, 100);
+
+        setTimeout(function() {
+            notification.removeClass('show');
+            setTimeout(function() {
+                notification.remove();
+            }, 300);
+        }, 5000);
+
+        notification.find('.notification-close').on('click', function() {
+            notification.removeClass('show');
+            setTimeout(function() {
+                notification.remove();
+            }, 300);
+        });
+    }
+
+    // ===== CONSOLIDATED SCROLL HANDLER =====
+    $(window).on('scroll', function() {
+        // Original scroll functions
+        checkPropertiesScroll(); // This now handles both regular and index properties
+        checkGalleryScroll();
+        checkAboutScroll();
+        checkContactScroll();
+        animateIndexAboutSection();
+
+        // New consolidated functions
+        animateProcessSteps();
+        animateHowWeWorkStats();
+        animateGalleryItems();
+        animateBlogCards();
+        animateModernFeatures();
+    });
+
+    // ===== ADDITIONAL MODERN FEATURES INITIALIZATION =====
+    // Double-check modern features animation on window load
+    $(window).on('load', function() {
+        setTimeout(function() {
+            if ($('.modern-features-section').length > 0) {
+                console.log('Window loaded - triggering modern features animations...');
+                forceModernFeaturesAnimation();
+            }
+
+            // Also force gallery animation on window load
+            if ($('.gallery-section').length > 0) {
+                console.log('Window loaded - triggering gallery animations...');
+                forceGalleryAnimation();
+            }
+        }, 1000);
+    });
+
+    // Also trigger on scroll to top
+    if ($(window).scrollTop() === 0) {
+        setTimeout(function() {
+            if ($('.modern-features-section').length > 0) {
+                forceModernFeaturesAnimation();
+            }
+        }, 2000);
+    }
+
+    // ===== DEBUGGING: Add manual trigger buttons =====
+    if ($('.modern-features-section').length > 0 || $('.gallery-section').length > 0) {
+        
+
+        $('#testAnimations').on('click', function() {
+            console.log('Manual features animation trigger clicked');
+
+            // Reset all animations
+            $('.timeline-item, .trust-item, .feature-showcase-card').removeClass('animate-in').css({
+                'opacity': '0',
+                'transform': 'translateY(50px)'
+            });
+
+            // Trigger animations again
+            setTimeout(function() {
+                forceModernFeaturesAnimation();
+            }, 100);
+        });
+
+        $('#testGallery').on('click', function() {
+            console.log('Manual gallery animation trigger clicked');
+
+            // Reset gallery animations
+            $('.gallery-item').removeClass('animate-in').css({
+                'opacity': '0',
+                'transform': 'translateY(80px) scale(0.9)'
+            });
+
+            $('.gallery-section').removeClass('title-visible');
+
+            // Trigger gallery animations again
+            setTimeout(function() {
+                forceGalleryAnimation();
+            }, 100);
+        });
+    }

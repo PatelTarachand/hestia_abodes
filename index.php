@@ -69,110 +69,110 @@
     </section>
 
     <!-- About Us Section -->
-    <section id="about" class="about-section">
+    <section id="about" class="index-about-section">
         <div class="container">
-            <div class="about-split">
+            <div class="index-about-split">
                 <!-- Left Side - About Content -->
-                <div class="about-content-side">
-                    <div class="content-wrapper">
-                        <div class="section-badge">ABOUT US</div>
-                        <h2 class="about-title">Why Choose Hestia Abodes?</h2>
-                        <div class="about-description">
+                <div class="index-about-content-side">
+                    <div class="index-content-wrapper">
+                        <div class="index-section-badge">ABOUT US</div>
+                        <h2 class="index-about-title">Building Dreams,<br>Creating Homes</h2>
+                        <div class="index-about-description">
                             <p>
-                                Hestia Abodes is a premium real estate consultancy firm based in Pune, committed to helping homebuyers and investors make confident, informed decisions in an ever-evolving property market.
+                                For over 15 years, Hestia Abodes has been Pune's most trusted real estate consultancy, transforming property dreams into reality. We combine deep market knowledge with personalized service to deliver exceptional results.
                             </p>
                             <p>
-                                As trusted Channel Partners (CPs), we bridge the gap between buyers and top-tier developers by offering personalized, transparent, and end-to-end real estate advisory services
+                                Our commitment to excellence, transparency, and client satisfaction has made us the preferred choice for thousands of families and investors across Pune.
                             </p>
                         </div>
 
-                        <div class="about-features">
-                            <div class="feature-item">
-                                <div class="feature-icon">
+                        <div class="index-about-features">
+                            <div class="index-feature-item">
+                                <div class="index-feature-icon">
                                     <i class="fas fa-shield-alt"></i>
                                 </div>
-                                <div class="feature-content">
+                                <div class="index-feature-content">
                                     <h4>Trusted Expertise</h4>
                                     <p>15+ years of proven track record in Pune's real estate market</p>
                                 </div>
                             </div>
 
-                            <div class="feature-item">
-                                <div class="feature-icon">
+                            <div class="index-feature-item">
+                                <div class="index-feature-icon">
                                     <i class="fas fa-handshake"></i>
                                 </div>
-                                <div class="feature-content">
+                                <div class="index-feature-content">
                                     <h4>Personalized Service</h4>
                                     <p>Tailored solutions that match your unique requirements</p>
                                 </div>
                             </div>
 
-                            <div class="feature-item">
-                                <div class="feature-icon">
+                            <div class="index-feature-item">
+                                <div class="index-feature-icon">
                                     <i class="fas fa-award"></i>
                                 </div>
-                                <div class="feature-content">
+                                <div class="index-feature-content">
                                     <h4>Award-Winning Excellence</h4>
                                     <p>Recognized for outstanding service and client satisfaction</p>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="about-cta-left">
+                        <div class="index-about-cta">
                             <a href="#contact" class="btn btn-primary">Get Free Consultation</a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Right Side - Statistics Cards -->
-                <div class="about-stats-side">
-                    <div class="stats-container">
-                        <div class="stats-grid">
+                <div class="index-about-stats-side">
+                    <div class="index-stats-container">
+                        <div class="index-stats-grid">
                             <!-- Card 1: Years in Business -->
-                            <div class="stat-card card-blue" data-count="15">
-                                <div class="card-background">
-                                    <div class="card-pattern"></div>
+                            <div class="index-stat-card index-card-dark" data-count="15">
+                                <div class="index-card-background">
+                                    <div class="index-card-pattern"></div>
                                 </div>
-                                <div class="card-content">
-                                    <div class="stat-number">0</div>
-                                    <div class="stat-label">Years in Business</div>
-                                    <div class="stat-description">Serving Pune since 2009</div>
+                                <div class="index-card-content">
+                                    <div class="index-stat-number">15</div>
+                                    <div class="index-stat-label">YEARS IN BUSINESS</div>
+                                    <div class="index-stat-description">Serving Pune since 2009</div>
                                 </div>
                             </div>
 
                             <!-- Card 2: Projects Completed -->
-                            <div class="stat-card card-green" data-count="500">
-                                <div class="card-background">
-                                    <div class="card-pattern"></div>
+                            <div class="index-stat-card index-card-dark" data-count="500">
+                                <div class="index-card-background">
+                                    <div class="index-card-pattern"></div>
                                 </div>
-                                <div class="card-content">
-                                    <div class="stat-number">0</div>
-                                    <div class="stat-label">Projects Completed</div>
-                                    <div class="stat-description">Successful deliveries</div>
+                                <div class="index-card-content">
+                                    <div class="index-stat-number">500</div>
+                                    <div class="index-stat-label">PROJECTS COMPLETED</div>
+                                    <div class="index-stat-description">Successful deliveries</div>
                                 </div>
                             </div>
 
                             <!-- Card 3: Happy Clients -->
-                            <div class="stat-card card-orange" data-count="5000">
-                                <div class="card-background">
-                                    <div class="card-pattern"></div>
+                            <div class="index-stat-card index-card-dark" data-count="5000">
+                                <div class="index-card-background">
+                                    <div class="index-card-pattern"></div>
                                 </div>
-                                <div class="card-content">
-                                    <div class="stat-number">0</div>
-                                    <div class="stat-label">Happy Clients</div>
-                                    <div class="stat-description">Satisfied families</div>
+                                <div class="index-card-content">
+                                    <div class="index-stat-number">5,000+</div>
+                                    <div class="index-stat-label">HAPPY CLIENTS</div>
+                                    <div class="index-stat-description">Satisfied families</div>
                                 </div>
                             </div>
 
                             <!-- Card 4: Awards Won -->
-                            <div class="stat-card card-purple" data-count="25">
-                                <div class="card-background">
-                                    <div class="card-pattern"></div>
+                            <div class="index-stat-card index-card-dark" data-count="25">
+                                <div class="index-card-background">
+                                    <div class="index-card-pattern"></div>
                                 </div>
-                                <div class="card-content">
-                                    <div class="stat-number">0</div>
-                                    <div class="stat-label">Awards Won</div>
-                                    <div class="stat-description">Industry recognition</div>
+                                <div class="index-card-content">
+                                    <div class="index-stat-number">25</div>
+                                    <div class="index-stat-label">AWARDS WON</div>
+                                    <div class="index-stat-description">Industry recognition</div>
                                 </div>
                             </div>
                         </div>
@@ -221,30 +221,30 @@
     </section>
 
     <!-- Featured Properties Section -->
-    <section id="properties" class="properties-section">
+    <section id="properties" class="index-properties-section">
         <div class="container">
-            <div class="section-header text-center">
-                <h2 class="section-title">Featured PROPERTIES</h2>
+            <div class="index-section-header text-center">
+                <h2 class="index-section-title">Featured PROPERTIES</h2>
             </div>
 
             <!-- Property 1 - Content Left, Image Right -->
-            <div class="property-showcase" data-aos="fade-up">
+            <div class="index-property-showcase" data-aos="fade-up">
                 <div class="row align-items-center">
                     <div class="col-lg-6">
-                        <div class="property-info">
-                            <div class="property-number">NO. 1</div>
-                            <h3 class="property-name">THE PAVILION HOUSE</h3>
-                            <div class="property-type">SINGLE FAMILY HOME</div>
-                            <div class="property-location">Baner, Pune</div>
-                            <div class="property-description">
+                        <div class="index-property-info">
+                            <div class="index-property-number">NO. 1</div>
+                            <h3 class="index-property-name">THE PAVILION HOUSE</h3>
+                            <div class="index-property-type">SINGLE FAMILY HOME</div>
+                            <div class="index-property-location">Baner, Pune</div>
+                            <div class="index-property-description">
                                 A stunning modern residence featuring contemporary architecture,
                                 spacious interiors, and premium amenities in the heart of Baner.
                             </div>
-                            <div class="property-price">₹2.5 Cr onwards</div>
+                            <div class="index-property-price">₹2.5 Cr onwards</div>
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <div class="property-image-main">
+                        <div class="index-property-image-main">
                             <img src="images/real1.jpg" alt="The Pavilion House">
                         </div>
                     </div>
@@ -252,24 +252,23 @@
             </div>
 
             <!-- Property 2 - Image Left, Content Right -->
-            <div class="property-showcase property-reverse" data-aos="fade-up">
+            <div class="index-property-showcase index-property-reverse" data-aos="fade-up">
                 <div class="row align-items-center">
-                    
                     <div class="col-lg-6">
-                        <div class="property-info">
-                            <div class="property-number">NO. 2</div>
-                            <h3 class="property-name">LUXURY VILLA ESTATE</h3>
-                            <div class="property-type">PREMIUM VILLA</div>
-                            <div class="property-location">Wakad, Pune</div>
-                            <div class="property-description">
+                        <div class="index-property-info">
+                            <div class="index-property-number">NO. 2</div>
+                            <h3 class="index-property-name">LUXURY VILLA ESTATE</h3>
+                            <div class="index-property-type">PREMIUM VILLA</div>
+                            <div class="index-property-location">Wakad, Pune</div>
+                            <div class="index-property-description">
                                 An exclusive villa offering unparalleled luxury with private gardens,
                                 premium finishes, and world-class amenities.
                             </div>
-                            <div class="property-price">₹3.2 Cr onwards</div>
+                            <div class="index-property-price">₹3.2 Cr onwards</div>
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <div class="property-image-main">
+                        <div class="index-property-image-main">
                             <img src="images/real.jpg" alt="Luxury Villa Estate">
                         </div>
                     </div>
@@ -277,34 +276,35 @@
             </div>
 
             <!-- Property 3 - Content Left, Image Right -->
-            <div class="property-showcase property-hidden" data-aos="fade-up">
+            <div class="index-property-showcase" data-aos="fade-up">
                 <div class="row align-items-center">
                     <div class="col-lg-6">
-                        <div class="property-info">
-                            <div class="property-number">NO. 3</div>
-                            <h3 class="property-name">MODERN APARTMENTS</h3>
-                            <div class="property-type">LUXURY APARTMENTS</div>
-                            <div class="property-location">Hinjewadi, Pune</div>
-                            <div class="property-description">
+                        <div class="index-property-info">
+                            <div class="index-property-number">NO. 3</div>
+                            <h3 class="index-property-name">MODERN APARTMENTS</h3>
+                            <div class="index-property-type">LUXURY APARTMENTS</div>
+                            <div class="index-property-location">Hinjewadi, Pune</div>
+                            <div class="index-property-description">
                                 Contemporary apartments designed for modern living with smart home features,
                                 premium amenities, and excellent connectivity.
                             </div>
-                            <div class="property-price">₹1.8 Cr onwards</div>
+                            <div class="index-property-price">₹1.8 Cr onwards</div>
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <div class="property-image-main">
+                        <div class="index-property-image-main">
                             <img src="images/real3.jpg" alt="Modern Apartments">
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- See More Button -->
+            <!-- View All Properties Button -->
             <div class="text-center mt-5">
-                <button class="btn btn-outline-dark btn-lg" id="seeMoreProperties">
-                    See More Properties
-                </button>
+                <a href="project.php" class="btn btn-primary btn-lg">
+                    <i class="fas fa-building me-2"></i>
+                    View All Properties
+                </a>
             </div>
         </div>
     </section>
@@ -552,6 +552,44 @@
                                                 <option value="rental">Rental</option>
                                             </select>
                                             <label for="interest" class="form-label">Property Interest</label>
+                                            <div class="input-line"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <div class="select-wrapper">
+                                            <select class="form-select" id="location" name="location">
+                                                <option value="">Select Preferred Location</option>
+                                                <option value="baner">Baner</option>
+                                                <option value="wakad">Wakad</option>
+                                                <option value="hinjewadi">Hinjewadi</option>
+                                                <option value="kharadi">Kharadi</option>
+                                                <option value="koregaon-park">Koregaon Park</option>
+                                                <option value="magarpatta">Magarpatta</option>
+                                                <option value="aundh">Aundh</option>
+                                                <option value="viman-nagar">Viman Nagar</option>
+                                                <option value="hadapsar">Hadapsar</option>
+                                                <option value="pune-city">Pune City</option>
+                                                <option value="other">Other Location</option>
+                                            </select>
+                                            <label for="location" class="form-label">Preferred Location</label>
+                                            <div class="input-line"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="select-wrapper">
+                                            <select class="form-select" id="budget" name="budget">
+                                                <option value="">Select Budget Range</option>
+                                                <option value="under-50">Under ₹50 Lakhs</option>
+                                                <option value="50-100">₹50 Lakhs - ₹1 Crore</option>
+                                                <option value="100-200">₹1 Crore - ₹2 Crores</option>
+                                                <option value="200-500">₹2 Crores - ₹5 Crores</option>
+                                                <option value="above-500">Above ₹5 Crores</option>
+                                            </select>
+                                            <label for="budget" class="form-label">Budget Range</label>
                                             <div class="input-line"></div>
                                         </div>
                                     </div>

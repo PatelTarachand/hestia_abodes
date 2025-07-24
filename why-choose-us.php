@@ -32,188 +32,251 @@
         </div>
     </section>
 
-    <!-- Why Choose Us Features -->
-    <section class="features-section">
+    <!-- Why Choose Us Features - New Modern Design -->
+    <section class="modern-features-section">
         <div class="container">
-            <!-- Interactive Features Header -->
-            <div class="features-header text-center" data-aos="zoom-in">
-                <div class="header-icon-wrapper">
-                    <div class="rotating-icons">
+            <!-- Section Header with Animated Background -->
+            <div class="modern-header text-center">
+                <div class="floating-elements">
+                    <div class="float-element float-1"></div>
+                    <div class="float-element float-2"></div>
+                    <div class="float-element float-3"></div>
+                </div>
+                <span class="section-badge">OUR ADVANTAGES</span>
+                <h2 class="modern-title">Why 5,000+ Families Trust Us</h2>
+                <p class="modern-subtitle">Experience the difference that sets us apart in Pune's real estate market</p>
+            </div>
+
+            <!-- Interactive Timeline Features -->
+            <div class="timeline-features">
+                <div class="timeline-line"></div>
+
+                <!-- Feature 1 -->
+                <div class="timeline-item timeline-left" data-number="01">
+                    <div class="timeline-content">
+                        <div class="feature-icon-modern">
+                            <i class="fas fa-user-shield"></i>
+                        </div>
+                        <h3>Your Advocate, Not Theirs</h3>
+                        <p>Unlike other consultants who work for developers, we work exclusively for YOU. Your interests come first, always.</p>
+                        <div class="feature-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">100%</span>
+                                <span class="stat-label">Client-First</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">0</span>
+                                <span class="stat-label">Hidden Fees</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="timeline-item timeline-right" data-number="02">
+                    <div class="timeline-content">
+                        <div class="feature-icon-modern">
+                            <i class="fas fa-microscope"></i>
+                        </div>
+                        <h3>Deep Market Intelligence</h3>
+                        <p>15+ years of data, trends, and insider knowledge. We don't just show properties - we reveal opportunities.</p>
+                        <div class="feature-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">15+</span>
+                                <span class="stat-label">Years Data</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">500+</span>
+                                <span class="stat-label">Projects Analyzed</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="timeline-item timeline-left" data-number="03">
+                    <div class="timeline-content">
+                        <div class="feature-icon-modern">
+                            <i class="fas fa-gavel"></i>
+                        </div>
+                        <h3>Legal Shield Protection</h3>
+                        <p>Every property goes through our 47-point legal verification. Zero legal issues, guaranteed peace of mind.</p>
+                        <div class="feature-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">47</span>
+                                <span class="stat-label">Point Check</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">0</span>
+                                <span class="stat-label">Legal Issues</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="timeline-item timeline-right" data-number="04">
+                    <div class="timeline-content">
+                        <div class="feature-icon-modern">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3>Lifetime Partnership</h3>
+                        <p>Our relationship doesn't end at possession. We're your real estate advisors for life - resale, rental, upgrades.</p>
+                        <div class="feature-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">∞</span>
+                                <span class="stat-label">Lifetime Support</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">24/7</span>
+                                <span class="stat-label">Availability</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Our Key Features Section -->
+            <div class="features-showcase-section">
+                <h3 class="features-showcase-title">Our Key Strengths</h3>
+                <div class="features-showcase-grid">
+
+                    <div class="feature-showcase-card">
+                        <div class="feature-showcase-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <div class="feature-showcase-content">
+                            <h4>Curated Property Selection</h4>
+                            <p>Every property is handpicked and thoroughly verified to meet our quality standards</p>
+                            <div class="feature-highlight">Premium Quality Assured</div>
+                        </div>
+                    </div>
+
+                    <div class="feature-showcase-card">
+                        <div class="feature-showcase-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="feature-showcase-content">
+                            <h4>47-Point Legal Verification</h4>
+                            <p>Comprehensive legal checks ensure zero legal complications for your investment</p>
+                            <div class="feature-highlight">100% Legal Clarity</div>
+                        </div>
+                    </div>
+
+                    <div class="feature-showcase-card">
+                        <div class="feature-showcase-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="feature-showcase-content">
+                            <h4>Client-First Representation</h4>
+                            <p>We work exclusively for you, not developers - your interests are our priority</p>
+                            <div class="feature-highlight">Your Dedicated Advocate</div>
+                        </div>
+                    </div>
+
+                    <div class="feature-showcase-card">
+                        <div class="feature-showcase-icon">
+                            <i class="fas fa-infinity"></i>
+                        </div>
+                        <div class="feature-showcase-content">
+                            <h4>Lifetime Partnership</h4>
+                            <p>Our relationship continues beyond purchase - we're your real estate advisors for life</p>
+                            <div class="feature-highlight">Ongoing Support</div>
+                        </div>
+                    </div>
+
+                    <div class="feature-showcase-card">
+                        <div class="feature-showcase-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="feature-showcase-content">
+                            <h4>Market Intelligence</h4>
+                            <p>15+ years of data and insights help you make informed investment decisions</p>
+                            <div class="feature-highlight">Data-Driven Advice</div>
+                        </div>
+                    </div>
+
+                    <div class="feature-showcase-card">
+                        <div class="feature-showcase-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <div class="feature-showcase-content">
+                            <h4>Transparent Process</h4>
+                            <p>Complete transparency in pricing, process, and progress - no hidden surprises</p>
+                            <div class="feature-highlight">100% Transparency</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Trust Indicators -->
+            <div class="trust-indicators">
+                <div class="trust-item">
+                    <div class="trust-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <div class="trust-content">
+                        <h4>Industry Recognition</h4>
+                        <p>25+ Awards for Excellence</p>
+                    </div>
+                </div>
+
+                <div class="trust-item">
+                    <div class="trust-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="trust-content">
+                        <h4>Happy Families</h4>
+                        <p>5,000+ Satisfied Clients</p>
+                    </div>
+                </div>
+
+                <div class="trust-item">
+                    <div class="trust-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <div class="trust-content">
+                        <h4>Market Experience</h4>
+                        <p>15+ Years in Pune</p>
+                    </div>
+                </div>
+
+                <div class="trust-item">
+                    <div class="trust-icon">
                         <i class="fas fa-star"></i>
-                        <i class="fas fa-heart"></i>
-                        <i class="fas fa-trophy"></i>
-                        <i class="fas fa-gem"></i>
                     </div>
-                </div>
-                <h2 class="features-title">What Makes Us Different</h2>
-                <p class="features-subtitle">Hover over each feature to discover our unique approach</p>
-            </div>
-
-            <!-- Interactive Feature Cards Grid -->
-            <div class="features-cards-grid">
-                <div class="feature-card-wrapper" data-aos="fade-up" data-aos-delay="100">
-                    <div class="feature-card">
-                        <div class="card-inner">
-                            <div class="card-front">
-                                <div class="feature-icon">
-                                    <i class="fas fa-search"></i>
-                                </div>
-                                <h4>🔎 Selective</h4>
-                                <span class="feature-tag">Not Generic</span>
-                            </div>
-                            <div class="card-back">
-                                <h4>Selective, Not Generic</h4>
-                                <p>We only recommend what fits you perfectly.</p>
-                                <div class="feature-badge">100% Personalized</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="feature-card-wrapper" data-aos="fade-up" data-aos-delay="200">
-                    <div class="feature-card">
-                        <div class="card-inner">
-                            <div class="card-front">
-                                <div class="feature-icon">
-                                    <i class="fas fa-handshake"></i>
-                                </div>
-                                <h4>🤝 Your Advocate</h4>
-                                <span class="feature-tag">Not Developer's</span>
-                            </div>
-                            <div class="card-back">
-                                <h4>We Represent You</h4>
-                                <p>Your goals come first, always.</p>
-                                <div class="feature-badge">Client-First Approach</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="feature-card-wrapper" data-aos="fade-up" data-aos-delay="300">
-                    <div class="feature-card">
-                        <div class="card-inner">
-                            <div class="card-front">
-                                <div class="feature-icon">
-                                    <i class="fas fa-chart-line"></i>
-                                </div>
-                                <h4>📈 Real Insights</h4>
-                                <span class="feature-tag">Not Marketing</span>
-                            </div>
-                            <div class="card-back">
-                                <h4>Market Insight Over Marketing</h4>
-                                <p>We share context, not just content.</p>
-                                <div class="feature-badge">Data-Driven Advice</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="feature-card-wrapper" data-aos="fade-up" data-aos-delay="400">
-                    <div class="feature-card">
-                        <div class="card-inner">
-                            <div class="card-front">
-                                <div class="feature-icon">
-                                    <i class="fas fa-clipboard-list"></i>
-                                </div>
-                                <h4>📋 Process-Driven</h4>
-                                <span class="feature-tag">Always Clear</span>
-                            </div>
-                            <div class="card-back">
-                                <h4>Process-Driven</h4>
-                                <p>You always know what's happening next.</p>
-                                <div class="feature-badge">100% Transparency</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="feature-card-wrapper" data-aos="fade-up" data-aos-delay="500">
-                    <div class="feature-card">
-                        <div class="card-inner">
-                            <div class="card-front">
-                                <div class="feature-icon">
-                                    <i class="fas fa-shield-alt"></i>
-                                </div>
-                                <h4>🛡️ Compliance-First</h4>
-                                <span class="feature-tag">Legal Clarity</span>
-                            </div>
-                            <div class="card-back">
-                                <h4>Compliance-First</h4>
-                                <p>We protect your investment with legal clarity.</p>
-                                <div class="feature-badge">Zero Legal Issues</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="feature-card-wrapper" data-aos="fade-up" data-aos-delay="600">
-                    <div class="feature-card">
-                        <div class="card-inner">
-                            <div class="card-front">
-                                <div class="feature-icon">
-                                    <i class="fas fa-users"></i>
-                                </div>
-                                <h4>💬 Long Haul</h4>
-                                <span class="feature-tag">Lifetime Support</span>
-                            </div>
-                            <div class="card-back">
-                                <h4>Here for the Long Haul</h4>
-                                <p>Even after deal closure, we remain your advisors.</p>
-                                <div class="feature-badge">Ongoing Partnership</div>
-                            </div>
-                        </div>
+                    <div class="trust-content">
+                        <h4>Client Rating</h4>
+                        <p>4.9/5 Average Rating</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Interactive Progress Bar -->
-            <div class="features-progress" data-aos="fade-up" data-aos-delay="700">
-                <div class="progress-header">
-                    <h3>Our Commitment Level</h3>
+            <!-- Modern Call to Action -->
+            <div class="modern-cta-section">
+                <div class="cta-background">
+                    <div class="cta-pattern"></div>
                 </div>
-                <div class="progress-bars">
-                    <div class="progress-item">
-                        <span class="progress-label">Client Satisfaction</span>
-                        <div class="progress-bar">
-                            <div class="progress-fill" data-percentage="98"></div>
-                            <span class="progress-percentage">98%</span>
-                        </div>
-                    </div>
-                    <div class="progress-item">
-                        <span class="progress-label">Transparency</span>
-                        <div class="progress-bar">
-                            <div class="progress-fill" data-percentage="100"></div>
-                            <span class="progress-percentage">100%</span>
-                        </div>
-                    </div>
-                    <div class="progress-item">
-                        <span class="progress-label">Legal Compliance</span>
-                        <div class="progress-bar">
-                            <div class="progress-fill" data-percentage="100"></div>
-                            <span class="progress-percentage">100%</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Enhanced Call to Action -->
-            <div class="features-cta text-center" data-aos="zoom-in" data-aos-delay="800">
-                <div class="cta-highlight">
-                    <div class="cta-icon-animation">
-                        <i class="fas fa-home"></i>
-                    </div>
-                    <h3>🏡 Choose Hestia Abodes—where every decision is backed by trust.</h3>
-                    <div class="cta-interactive-buttons">
-                        <button class="cta-btn primary-btn" onclick="window.location.href='tel:+917038204841'">
+                <div class="cta-content">
+                    <div class="cta-badge">READY TO START?</div>
+                    <h3>Experience the Hestia Abodes Difference</h3>
+                    <p>Join 5,000+ satisfied families who chose us as their trusted real estate partner</p>
+                    <div class="cta-buttons">
+                        <a href="tel:+917038204841" class="modern-btn primary">
                             <i class="fas fa-phone"></i>
                             <span>Call Now</span>
-                            <div class="btn-ripple"></div>
-                        </button>
-                        <button class="cta-btn secondary-btn" onclick="window.location.href='index.php#contact'">
-                            <i class="fas fa-envelope"></i>
-                            <span>Get Quote</span>
-                            <div class="btn-ripple"></div>
-                        </button>
+                            <div class="btn-glow"></div>
+                        </a>
+                        <a href="index.php#contact" class="modern-btn secondary">
+                            <i class="fas fa-calendar-check"></i>
+                            <span>Book Consultation</span>
+                            <div class="btn-glow"></div>
+                        </a>
+                    </div>
+                    <div class="cta-guarantee">
+                        <i class="fas fa-shield-check"></i>
+                        <span>100% Free Consultation • No Hidden Charges</span>
                     </div>
                 </div>
             </div>
@@ -313,7 +376,7 @@
     <section class="final-cta-section">
         <div class="container">
             <div class="cta-content text-center">
-                <h2 class="cta-title">📞 Let's build your success story together.</h2>
+                <h2 class="cta-title text-dark">📞 Let's build your success story together.</h2>
                 <div class="cta-buttons">
                     <a href="tel:+917038204841" class="btn btn-primary btn-lg">
                         <i class="fas fa-phone"></i> Call Us Now

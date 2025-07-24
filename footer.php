@@ -57,7 +57,7 @@
                                 <li><a href="services.php">Services</a></li>
                                 <li><a href="why-choose-us.php">Why Choose Us</a></li>
                                 <li><a href="index.php#properties">Properties</a></li>
-                                <li><a href="index.php#contact">Contact</a></li>
+                                <li><a href="contact.php">Contact</a></li>
                             </ul>
                         </div>
                     </div>
@@ -84,11 +84,11 @@
                             <div class="footer-contact">
                                 <div class="contact-item">
                                     <i class="fas fa-phone"></i>
-                                    <a href="tel:+917038204841">+91 70382 04841</a>
+                                    <a href="tel:+919067881848">+91 906 788 1848</a>
                                 </div>
                                 <div class="contact-item">
                                     <i class="fas fa-envelope"></i>
-                                    <a href="mailto:info@hestiaabodes.com">info@hestiaabodes.com</a>
+                                    <a href="mailto:hello@hestiaabodes.in">hello@hestiaabodes.in</a>
                                 </div>
                                 <div class="contact-item">
                                     <i class="fas fa-map-marker-alt"></i>
@@ -139,7 +139,7 @@
 
     <!-- WhatsApp Float Button -->
     <div class="whatsapp-float">
-        <a href="https://wa.me/917038204841" target="_blank">
+        <a href="https://wa.me/919067881848" target="_blank">
             <i class="fab fa-whatsapp"></i>
         </a>
     </div>
